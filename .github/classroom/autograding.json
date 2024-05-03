@@ -1,0 +1,69 @@
+{
+  "tests": [
+    {
+      "name": "Test CPP implementation of `add` with complex numbers",
+      "setup": "mkdir -p build && cd build; cmake ..; make -j4 complex_numbers_test",
+      "run": "build/complex_numbers_test [addition]",
+      "timeout": 2.5,
+      "points": 1
+    },
+    {
+      "name": "Test CPP implementation of `sub` with complex numbers",
+      "setup": "mkdir -p build && cd build; cmake ..; make -j4 complex_numbers_test",
+      "run": "build/complex_numbers_test [subtraction]",
+      "timeout": 0.5,
+      "points": 1
+    },
+    {
+      "name": "Test CPP implementation of `mul` with complex numbers",
+      "setup": "mkdir -p build && cd build; cmake ..; make -j4 complex_numbers_test",
+      "run": "build/complex_numbers_test [multiplication]",
+      "timeout": 0.5,
+      "points": 1
+    },
+    {
+      "name": "Test reading values into a C struct",
+      "setup": "mkdir -p build && cd build; cmake ..; make -j4 student_database_test",
+      "run": "build/student_database_test [read]",
+      "timeout": 0.5,
+      "points": 1
+    },
+    {
+      "name": "Test printing values from a C struct",
+      "setup": "mkdir -p build && cd build; cmake ..; make -j4 student_database_test",
+      "run": "build/student_database_test [print]",
+      "timeout": 0.5,
+      "points": 1
+    },
+    {
+      "name": "Test calculating the grand total of an empty shopping cart",
+      "setup": "mkdir -p build && cd build; cmake ..; make -j4 grand_total_test",
+      "run": "build/grand_total_test [empty]",
+      "timeout": 0.5,
+      "points": 1
+    },
+    {
+      "name": "Test calculating the grand total of a single item",
+      "setup": "mkdir -p build && cd build; cmake ..; make -j4 grand_total_test",
+      "run": "build/grand_total_test [single]",
+      "timeout": 0.5,
+      "points": 1
+    },
+    {
+      "name": "Test calculating the grand total of a regular shopping cart",
+      "setup": "mkdir -p build && cd build; cmake ..; make -j4 grand_total_test",
+      "run": "build/grand_total_test [regular]",
+      "timeout": 0.5,
+      "points": 1
+    }
+  ],
+  "__deactivated_tests": [
+    {
+      "name": "cppcheck",
+      "setup": "sudo apt install --assume-yes cppcheck",
+      "run": "cppcheck --error-exitcode=1 .",
+      "timeout": 1,
+      "points": 1
+    }
+  ]
+}
