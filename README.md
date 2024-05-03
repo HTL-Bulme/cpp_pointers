@@ -1,5 +1,11 @@
 # C++ C-Structs Exercises
 
+In this homework you are asked to restrict yourself to not using any
+`include` except `<cstddef>`.
+The purpose of is to understand and comfortable with pointers and hence
+you'll have to juggle the data for yourself instead of including most of the
+solutions.
+
 Compile your code via
 
 ```shell
@@ -9,76 +15,71 @@ make -j8  # use 8 processor cores when compiling
 ```
 
 If needed, consult the test files
-([complex_numbers_test.cpp](complex_numbers_test.cpp),
- [student_database_test.cpp](student_database_test.cpp) and
- [grand_total_test.cpp](grand_total_test.cpp))
+([pointers_test.cpp](pointers_test.cpp),
+ [matrix_test.cpp](matrix_test.cpp) and
+ [sort_test.cpp](sort_test.cpp))
 to understand what exactly your code needs to accomplish.
 
 
-## Task 1 - Complex Numbers
-In `complex_numbers.hpp` implement a struct `Complex` that stores the `real`
-number and the imaginary unit (`imag`). Both `real`
-and `image` should be `double`.
-Implement the following functions in `complex_numbers.cpp`:
+## Task 1 - Introductory Tasks
+The following subtasks all have to be implemented in `pointers.cpp` and
+the required functions and data structures declared in `pointers.hpp`.
+
+### Swap the Value of two Variables
+Implement a function to swap the value of two `int` variables.
 
 ```cpp
-Complex add(Complex a, Complex b);  // return the sum of `a` and `b`
-Complex sub(Complex a, Complex b);  // return the difference of `a` and `b`
-Complex mul(Complex a, Complex b);  // return the product of `a` and `b`
+//! Swap the value of `a` and `b`.
+void swap(int* a, int* b);
 ```
 
-Having these functions in place, it becomes possible to add, substract,
-and multiply two complex numbers. The mathematical basis for the
-implementation is available on Wikipedia for
-[addition and substraction](https://en.wikipedia.org/wiki/Complex_number#Addition_and_subtraction)
-as well as
-[multiplication](https://en.wikipedia.org/wiki/Complex_number#Multiplication_and_square).
-
-Name the source file `complex_numbers.cpp` and the header file
-`complex_numbers.hpp`.
-
-
-## Task 2 - Student Data
-In `student_database.hpp` implement a struct that stores information about a
-student in a struct
-called `Student`. Each student has a
-`uint64_t id`,
-`std::string first_name`  and a
-`std::string last_name` (in that order). Don't forget to also declare all used
-functions in the header file.
-
-Implement the following functions:
+### Array Functions
+Implement the follwoing functions:
 
 ```cpp
-Student read_student(std::istream& in);  // read student info from stream
-// print one student per line to out
-void print_students(std::ostream& out, std::vector<Student> students);
+//! Reverses a given array in-place
+void reverse(int* array, std::size_t count);
+
+//! Return a pointer to the first element matching the value of `needle`.
+//! If there are no matches, return `nullptr`.
+int* find(int needle, int* haystack, std::size_t count);
+
+//! Return a pointer to the first row containing the value of `needle`.
+//! If there are no matches, return `nullptr`.
+int* find_containing_row(int needle, int** matrix,
+                         std::size_t rows, std::size_t cols);
 ```
 
-Name the source file `student_database.cpp` and the header file
-`student_database.hpp`.
 
+## Task 2 - Matrices
+A Matrix can be stored as an array of `row` arrays with `cols` elements in
+each. Alternatively, a matrix can be represented as a single array containing
+`row * cols` elements. It is your duty to find if a matrix given in the first
+form is equivalent to a matrix given in the second form.
 
-# Task 3 - Calculate Grand Total
-You're given a vector of products with their quantity, name and unit
-price. It is your duty to calculate the grand total (for each product,
-multiply the quantity and its unit price and then calculate the sum of these
-products).
-To do so, implement the function
-`double calculate_grand_total(std::vector<Item> items)`.
+To do so, write a function
 
-The `struct Item` has to be declared in a header file so that it can be
-re-used in other files as well. It must follow the specification in the
-diagram below
-
-```mermaid
-classDiagram
-
-class Item {
-  +uint64_t quantity
-  +std::string name
-  +double price
-}
+```cpp
+bool is_equivalent(int** matrix, int* alt_matrix,
+                   std::size_t rows, std::size_t cols);
 ```
 
-Name the source file `grand_total.cpp` and the header file `shopping.hpp`.
+Store your code in `matrix.cpp` and the declarations in `matrix.hpp`
+(you need to create both files yourself).
+
+
+# Task 3 - Sort an Array
+Implement a function
+
+```cpp
+void sort(int* data, std::size_t count);
+```
+
+that sorts the given integer array in-place. Do not use any library functions.
+You must not create a copy of the array either.
+You may implement any sorting algorithm (including your own idea for sorting
+an array), however [bubble sort](https://en.wikipedia.org/wiki/Bubble_sort)
+is recommended
+in this case as it is among the easiest to understand and implement.
+
+Name the source file `sort.cpp` and the header file `sort.hpp`.
