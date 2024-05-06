@@ -55,9 +55,13 @@ int* find_containing_row(int needle, int** matrix,
 A Matrix can be stored as an array of `row` arrays with `cols` elements in
 each. Alternatively, a matrix can be represented as a single array containing
 `row * cols` elements. It is your duty to find if a matrix given in the first
-form is equivalent to a matrix given in the second form.
+form is equivalent to a matrix given in the second form. The two
+representations are equivalent if and only if all elements have the same value
+to their corresponding elements in the alternative representation.
+You may assume that the size of the alternative representation is matching
+the size of the "regular" matrix.
 
-To do so, write a function
+Implement the function
 
 ```cpp
 bool is_equivalent(int** matrix, int* alt_matrix,
