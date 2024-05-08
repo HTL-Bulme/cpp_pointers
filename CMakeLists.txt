@@ -16,7 +16,9 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(Catch2)
 
 set(CPP_SRCS  # all non-main source files
-  c_strings.cpp
+  matrix.cpp
+  pointers.cpp
+  sort.cpp
 )
 
 
