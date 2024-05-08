@@ -1,4 +1,4 @@
-# C++ C-Structs Exercises
+# C++ Pointer Exercises
 
 In this homework you are asked to restrict yourself to not using any
 `include` except `<cstddef>`.
